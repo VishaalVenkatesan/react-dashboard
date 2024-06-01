@@ -18,7 +18,7 @@ app.get('/api/drivers', async (req, res) => {
 
   try {
     // Fetch data from external API based on country
-    const response = await axios.get(`${process.env.API_URL}?countryName=${country}`);
+    const response = await axios.get(`https://us-central1-projectexperiment-420611.cloudfunctions.net/assignApi?countryName=${country}`);
     res.send(response.data);
   } catch (error) {
     // Handle errors
