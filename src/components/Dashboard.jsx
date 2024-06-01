@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { PieChart, Pie, Cell, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
-import { Table, Row, Col, Statistic } from 'antd';
-import Link from 'antd/es/typography/Link';
+import { Table, Row, Col, Statistic, Button } from 'antd';
 import Loading from './Loading';
+import { ArrowLeftOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   const location = useLocation();
@@ -31,7 +32,7 @@ const Dashboard = () => {
 
   if (loading) return <Loading/>;
 
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8B4513', '#DC143C', '#2E8B57', '#DAA520', '#4B0082', '#7CFC00'];
+  const COLORS = ['#5D8C8A', '#BD7F6B', '#B9A76B', '#7FADA9', '#B1565C', '#7F6B8E', '#B34D4D', '#7F6B8E', '#4D8E6A', '#7F7F6E'];
 
   const columns = [
     { title: 'Driver ID', dataIndex: 'driver_id', key: 'driver_id' },
@@ -48,7 +49,7 @@ const Dashboard = () => {
   const averageEarnings = (totalEarnings / data.length).toFixed(2);
 
   return (
-    <div className='flex flex-col w-full text-center '>
+    <div className='flex flex-col w-full p-8 text-center bg-gradient-to-r from-blue-200 to-indigo-200 gap-y-8'>
       <h1 className='p-6 text-3xl font-extrabold'>Dashboard for {country}</h1>
      <Row gutter={16} className='pt-[20px] items-center' justify="center">
     <Col span={8}>
@@ -98,14 +99,18 @@ const Dashboard = () => {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="average_earnings_per_month" fill="#82ca9d" />
+        <Bar dataKey="average_earnings_per_month" fill="#5b8b6a" />
       </BarChart>
       </div>
       <div className="pt-[100px]">
       <Table dataSource={data} columns={columns} rowKey="driver_id" />
       </div>
       <div className="">
-        <Link href="/select" className='text-2xl'>Change Country</Link>
+         <Link to="/select">
+      <Button type="primary" size="large" icon={<ArrowLeftOutlined />} className="mb-4">
+        Change Country
+      </Button>
+    </Link>
       </div>
     </div>
   );
