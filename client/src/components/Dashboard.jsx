@@ -19,7 +19,7 @@ const Dashboard = () => {
 useEffect(() => {
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${process.env.BACKEND_URL}/api/drivers?country=${country}`); // Use environment variable for backend URL
+      const response = await axios.get(`https://react-dashboard-vishaal-backend.vercel.app/api/drivers?country=${country}`); // Use environment variable for backend URL
       setData(response.data);
       setLoading(false);
     } catch (error) {
