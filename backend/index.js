@@ -2,13 +2,13 @@
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
-
+import process from 'process';
 const app = express();
 const PORT = process.env.PORT || 4000;
 
 // CORS Middleware
 app.use(cors({
-  origin: "https://react-dashboard-vishaal-venkatesan.vercel.app/",
+  origin: process.env.FRONTEND_URL, // Use environment variable for frontend URL
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -29,5 +29,5 @@ app.get('/api/drivers', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on https://react-dashboard-vishaal-venkatesan.vercel.app/`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });

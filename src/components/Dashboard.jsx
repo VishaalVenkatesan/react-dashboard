@@ -6,6 +6,7 @@ import { Table, Row, Col, Statistic, Button } from 'antd';
 import Loading from './Loading';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
+import process from 'process';
 
 const Dashboard = () => {
   const location = useLocation();
@@ -15,20 +16,20 @@ const Dashboard = () => {
   const query = new URLSearchParams(location.search);
   const country = query.get('country');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`https://react-dashboard-vishaal-venkatesan.vercel.app/api/drivers?country=${country}`);
-        setData(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching data', error);
-        setLoading(false);
-      }
-    };
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/drivers?country=${country}`); // Use environment variable for backend URL
+      setData(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error fetching data', error);
+      setLoading(false);
+    }
+  };
 
-    fetchData();
-  }, [country]);
+  fetchData();
+}, [country]);
 
   if (loading) return <Loading/>;
 
