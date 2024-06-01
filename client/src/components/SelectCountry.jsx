@@ -13,12 +13,12 @@ const SelectCountry = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600">
-      <div className="w-full max-w-md p-8 bg-white shadow-lg rounded-xl">
-        <h1 className="mb-6 text-4xl font-bold text-center text-gray-800">Select a Country</h1>
+      <div className=" max-w-lg p-8 ] bg-white shadow-lg  rounded-xl">
+        <h1 className="mb-6 text-3xl font-bold text-center text-gray-800">Select a Country</h1>
         <select 
           value={country} 
           onChange={(e) => setCountry(e.target.value)}
-          className="w-full p-4 mb-6 text-xl bg-white border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-600"
+          className="w-full p-4 mb-6 bg-white border border-gray-300 rounded-lg shadow-sm text-md focus:outline-none focus:ring-2 focus:ring-blue-600"
         >
           <option value="">Select Country</option>
           <option value="USA">USA</option>
