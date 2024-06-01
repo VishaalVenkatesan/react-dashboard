@@ -18,7 +18,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:4000/api/drivers?country=${country}`);
+        const response = await axios.get(`https://react-dashboard-vishaal-venkatesan.vercel.app/api/drivers?country=${country}`);
         setData(response.data);
         setLoading(false);
       } catch (error) {

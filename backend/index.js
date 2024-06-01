@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 4000;
 
 // CORS Middleware
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "https://react-dashboard-vishaal-venkatesan.vercel.app/",
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -29,5 +29,5 @@ app.get('/api/drivers', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on https://react-dashboard-vishaal-venkatesan.vercel.app/`);
 });
