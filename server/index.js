@@ -18,7 +18,7 @@ app.get('/api/drivers', async (req, res) => {
 
   try {
     // Fetch data from external API based on country
-    const response = await axios.get(`https://us-central1-projectexperiment-420611.cloudfunctions.net/assignApi?countryName=${country}`);
+    const response = await axios.get(`${process.env.API_URL}?countryName=${country}`);
     res.send(response.data);
   } catch (error) {
     // Handle errors
@@ -27,7 +27,12 @@ app.get('/api/drivers', async (req, res) => {
   }
 });
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on PORT ${PORT}`);
 });
-
