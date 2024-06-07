@@ -27,7 +27,7 @@ app.get('/api/drivers', async (req, res) => {
 });
 
 // Error handling middleware
-app.use((err, req, res, next) => {
+app.use((err,res) => {
   console.error(err.stack);
   res.status(500).send('Something broke!');
 });
